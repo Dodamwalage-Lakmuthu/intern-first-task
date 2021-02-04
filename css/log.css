@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  width: 400px;
+  justify-content: center;
+  margin-top: 25vh;
+  border: 2px solid #87a5c0;
+  border-radius: 10px;
+}
+
+form {
+  margin-left: auto;
+  margin-right: auto;
+}
+h2 {
+  text-align: center;
+}
+
+.logbutton {
+  text-align: center;
+}
+.create {
+  text-align: center;
+}
+body {
+  padding-right: 10vw;
+  padding-left: 10vw;
+}
+.signup {
+  justify-content: center;
+  margin-top: 10px;
+  border: 2px solid #87a5c0;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  align-content: center;
+  padding: 1%;
+}
