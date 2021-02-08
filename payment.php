@@ -1,7 +1,13 @@
 <?php
 session_start();
-require_once './includes/dbcon.php';
+if (!isset($_SESSION["FirstName"])) {
+
+    header("Location:index.php");
+}
+
+require './includes/dbcon.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,34 +50,17 @@ require_once './includes/dbcon.php';
         <!--   body of web page -->
 
         <main>
-            <h2>Shop Page</h2>
+
+
             <?php
-            $sql = "SELECT * FROM products";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    $productid = $row["ProductId"];
-                    $imgsrc = $row["ImageLocation"];
-                    $title = $row["Title"];
-                    $description = $row["Description"];
-                    $price = $row["Price"];
-                    echo '<div class="item" id="' . $productid . '">
-                <div class="image">
-                    <img src="' . $imgsrc . '" alt="product" class="product-image">
-                </div>
-                <div class="info-bar">
-                    <h2>' . $title . '</h2>
-                    <p>' . $description . '</p>
-                </div>
-                <div class="price">
-                    <h4>Rs:' . $price . '</h4>
-                </div>
-            </div>';
-                }
+            $buyerId = $_GET["buyerId"];
+            $sql1 = "DELETE FROM cart WHERE BuyerId=" . $buyerId . ";";
+            if ($conn->query($sql1) == TRUE) {
+                echo "your payment successfull";
+            } else {
+                echo $conn->error;
             }
             ?>
-
-
 
 
         </main><!-- en of body -->

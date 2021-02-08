@@ -1,0 +1,23 @@
+.details {
+  display: flex;
+  flex-direction: column;
+}
+.img-con {
+  width: 50vw;
+}
+
+.product {
+  display: flex;
+  left: 0;
+}
+.product img {
+  margin-left: 0;
+  width: 30vw;
+  height: auto;
+}
+button.icon {
+  min-width: fit-content;
+  border: none;
+  color: red;
+  background: blue;
+}

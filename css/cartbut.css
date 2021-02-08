@@ -1,0 +1,12 @@
+button.icon {
+  min-width: fit-content;
+  border: none;
+  color: #e63946;
+  background: #1f5298;
+  border-radius: 5px;
+  margin: 5px;
+}
+button i {
+  width: 100px;
+  padding: 10px;
+}

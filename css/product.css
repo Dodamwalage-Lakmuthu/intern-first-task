@@ -1,0 +1,28 @@
+.item {
+  height: 50px;
+  background: #6bcadb;
+  display: flex;
+  border: none;
+  border-radius: 10px;
+  height: fit-content;
+  margin: 10px;
+}
+
+img {
+  height: 70px;
+  width: 90px;
+  border-radius: 10px;
+  margin-left: 0;
+}
+
+.info-bar {
+  text-align: center;
+}
+.price {
+  text-align: center;
+  color: #43b168;
+}
+
+.item:hover {
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+}

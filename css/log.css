@@ -38,3 +38,10 @@ body {
   align-content: center;
   padding: 1%;
 }
+
+.alert {
+  display: block;
+  height: 5px;
+  text-align: center;
+  background: #ffbfbf;
+}
