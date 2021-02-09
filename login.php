@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once './includes/dbcon.php';
+require_once './includes/query.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,17 +74,17 @@ include_once './includes/dbcon.php';
     <?php
 
     if (!empty($email) && !empty($password)) {
-
-        $sql = "SELECT FirstName,UserId FROM users WHERE Email='$email' AND Password='$password';";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $_SESSION["FirstName"] = $row["FirstName"];
-            $_SESSION["UserId"] = $row["UserId"];
-            header("Location: index.php");
-        } else {
-            $Errlogin = "Invalid credentials";
-        }
+        login($conn, $email, $password);
+        // $sql = "SELECT FirstName,UserId FROM users WHERE Email='$email' AND Password='$password';";
+        // $result = $conn->query($sql);
+        // if ($result->num_rows > 0) {
+        //     $row = $result->fetch_assoc();
+        //     $_SESSION["FirstName"] = $row["FirstName"];
+        //     $_SESSION["UserId"] = $row["UserId"];
+        //     header("Location: index.php");
+        // } else {
+        //     $Errlogin = "Invalid credentials";
+        // }
     }
     ?>
 

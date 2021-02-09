@@ -1,5 +1,6 @@
 <?php
 include_once './includes/dbcon.php';
+require_once './includes/query.php';
 ?>
 
 
@@ -11,6 +12,8 @@ include_once './includes/dbcon.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/log.css">
+    <link rel="stylesheet" href="./css/main.css">
+
     <title>Document</title>
 </head>
 
@@ -66,71 +69,89 @@ include_once './includes/dbcon.php';
     ?>
 
 
+    <div class="container">
+        <header>
+            <h1>My Shopping</h1>
+        </header>
+        <!-- nav bar  -->
+        <nav>
+            <ul>
+                <li><a href="./index.php" id="index">Shop</a></li>
+                <li><a href="./about.php" id="about">About</a></li>
+                <li><a href="./contact.php" id="contact">Contact</a></li>
+                <?php
+                if (isset($_SESSION["FirstName"])) {
+                    echo "<li><a href='./account.php' id='account'>" . $_SESSION["FirstName"] . "'s Account</a></li>";
+                    echo "<li><a href='./includes/logout.php' id='logout'>LOGOUT</a></li>";
+                } else {
+                    echo "<li><a href='./signup.php' id='signup'>SignUp</a></li>";
+                    echo "<li><a href='./login.php' id='login'>LogIn</a></li>";
+                }
+                ?>
+
+
+            </ul>
+        </nav><!-- end of nav bar -->
 
 
 
-    <div class="signup">
-        <a href="./index.php">
-            <h2>My Shopping</h2>
-        </a>
+        <div class="signup">
+            <a href="./index.php">
+                <h2>My Shopping</h2>
+            </a>
 
-        <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
-            <div class="form-group row">
-                <label for="firstname" class="col-sm-3 col-form-label">First Name</label>
-                <div class="col-sm-6">
-                    <input type="text" name="firstname" id="firstname" class="form-control" placeholder="FirstName">
-                    <p><?php echo $Errfirstname; ?></p>
+            <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+                <div class="form-group row">
+                    <label for="firstname" class="col-sm-3 col-form-label">First Name</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="firstname" id="firstname" class="form-control" placeholder="FirstName">
+                        <p><?php echo $Errfirstname; ?></p>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="lastname" class="col-sm-3 col-form-label">Last Name</label>
-                <div class="col-sm-6">
-                    <input type="text" name="lastname" id="lastname" class="form-control" placeholder="lastName">
-                    <p><?php echo $Errlastname; ?></p>
+                <div class="form-group row">
+                    <label for="lastname" class="col-sm-3 col-form-label">Last Name</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="lastname" id="lastname" class="form-control" placeholder="lastName">
+                        <p><?php echo $Errlastname; ?></p>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="username" class="col-sm-3 col-form-label">Username</label>
-                <div class="col-sm-6">
-                    <input type="text" name="username" id="username" class="form-control" placeholder="username">
-                    <p><?php echo $Errusername; ?></p>
+                <div class="form-group row">
+                    <label for="username" class="col-sm-3 col-form-label">Username</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="username" id="username" class="form-control" placeholder="username">
+                        <p><?php echo $Errusername; ?></p>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="email" class="col-sm-3 col-form-label">Email</label>
-                <div class="col-sm-6">
-                    <input type="email" name="email" class="form-control" id="email" placeholder="Email">
-                    <p><?php echo $Erremail; ?></p>
+                <div class="form-group row">
+                    <label for="email" class="col-sm-3 col-form-label">Email</label>
+                    <div class="col-sm-6">
+                        <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+                        <p><?php echo $Erremail; ?></p>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="password" class="col-sm-3 col-form-label">Password</label>
-                <div class="col-sm-6">
-                    <input type="password" name="password1" class="form-control" id="password1" placeholder="password">
+                <div class="form-group row">
+                    <label for="password" class="col-sm-3 col-form-label">Password</label>
+                    <div class="col-sm-6">
+                        <input type="password" name="password1" class="form-control" id="password1" placeholder="password">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="password2" class="col-sm-3 col-form-label">Re Enter password</label>
-                <div class="col-sm-6">
-                    <input type="password" name="password2" class="form-control" id="password2" placeholder="Re Enter Password">
-                    <p><?php echo $Errpassword; ?></p>
+                <div class="form-group row">
+                    <label for="password2" class="col-sm-3 col-form-label">Re Enter password</label>
+                    <div class="col-sm-6">
+                        <input type="password" name="password2" class="form-control" id="password2" placeholder="Re Enter Password">
+                        <p><?php echo $Errpassword; ?></p>
+                    </div>
                 </div>
-            </div>
-            <div class="logbutton">
-                <button type="submit" id="sub-btn" class="btn btn-primary">SIGNUP</button>
-            </div>
-        </form>
+                <div class="logbutton">
+                    <button type="submit" id="sub-btn" class="btn btn-primary">SIGNUP</button>
+                </div>
+            </form>
+        </div>
     </div>
     <?php
 
     if (!empty($firstname) && !empty($lastname) && !empty($email) && !empty($username) && !empty($password)) {
-        $sql = "INSERT INTO users (LastName,FirstName,UserName,Password,Email) VALUES('$lastname','$firstname','$username','$password','$email');";
-        if ($conn->query($sql) == TRUE) {
-            // echo "<script>alert(acount created succefully!)</script>";
-            header("Location:login.php");
-        } else {
-            echo "$sql" . "<br>" . $conn->error;
-        }
+        signup($conn, $lastname, $firstname, $username, $password, $email);
     }
 
     ?>

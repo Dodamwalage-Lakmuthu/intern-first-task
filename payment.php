@@ -5,7 +5,8 @@ if (!isset($_SESSION["FirstName"])) {
     header("Location:index.php");
 }
 
-require './includes/dbcon.php';
+require_once './includes/dbcon.php';
+require_once './includes/query.php';
 ?>
 
 <!DOCTYPE html>
@@ -55,12 +56,27 @@ require './includes/dbcon.php';
 
             <?php
             $buyerId = $_GET["buyerId"];
-            $sql1 = "DELETE FROM cart WHERE BuyerId=" . $buyerId . ";";
-            if ($conn->query($sql1) == TRUE) {
-                echo "your payment successfull";
-            } else {
-                echo $conn->error;
+            $results = getproductid($conn, $buyerId);
+            if ($results->num_rows > 0) {
+                while ($row = $results->fetch_assoc()) {
+                    $productId = $row["ProductId"];
+                    $quantity  = $row["Quantity"];
+                    // echo $quantity . "  ";
+
+                    //CREATE ODER
+                    createoder($conn, $buyerId, $productId, $quantity);
+
+                    //UPDATE PRODUCT TABLE QUANTITY
+                    $avbquantity = getCurrentProductQua($conn, $productId);
+                    // echo $avbquantity . "  ";
+                    $newQuantity = $avbquantity - $quantity;
+                    // echo $newQuantity . "<br>";
+                    updateProductQuantity($conn, $productId, $newQuantity);
+                }
             }
+
+            deletecart($conn, $buyerId);
+
             ?>
 
 

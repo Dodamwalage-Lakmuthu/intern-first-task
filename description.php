@@ -1,6 +1,8 @@
 <?php
 session_start();
 require './includes/dbcon.php';
+
+require_once './includes/query.php'
 ?>
 
 <head>
@@ -48,8 +50,8 @@ require './includes/dbcon.php';
         <main>
             <?php
             $productid = $_GET['id'];
-            $sql = 'SELECT products.Title,products.Price,products.ImageLocation,products.Quantity,products.Description,products.OwnerId,users.UserName FROM products INNER JOIN users ON products.OwnerId = users.UserId where products.ProductId=' . $productid;
-            $result = $conn->query($sql);
+            // $sql = 'SELECT products.Title,products.Price,products.ImageLocation,products.Quantity,products.Description,products.OwnerId,users.UserName FROM products INNER JOIN users ON products.OwnerId = users.UserId where products.ProductId=' . $productid;
+            $result = getproddescription($conn, $productid);
             $row = $result->fetch_assoc();
             //product details
             $title = $row["Title"];

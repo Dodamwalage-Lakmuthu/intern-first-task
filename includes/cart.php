@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once './dbcon.php';
+require_once './query.php';
 
 $buyquantity = (int)($_POST["buy-quantity"]);
 // $productId = (int)$_SESSION["productId"];
@@ -11,11 +12,5 @@ $productId = $_POST["productId"];
 $sellerId = $_POST["ownerId"];
 $buyerquantity = $_POST["buy-quantity"];
 
-$sql = "INSERT INTO cart(ProductId,SellerId,BuyerId,Quantity) VALUES($productId,$sellerId,$buyerId,$buyquantity);";
 
-
-if ($conn->query($sql) == TRUE) {
-    header('Location:../addcart.php');
-} else {
-    echo $conn->error;
-}
+addcart($conn, $productId, $sellerId, $buyerId, $buyquantity);

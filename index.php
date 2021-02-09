@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once './includes/dbcon.php';
+require_once './includes/query.php'
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,12 +48,11 @@ require_once './includes/dbcon.php';
         <!--   body of web page -->
 
         <main>
-            <h2>Shop Page</h2>
+            <h2>Our Products</h2>
 
             <div class="con">
                 <?php
-                $sql = "SELECT * FROM products";
-                $result = $conn->query($sql);
+                $result = allproducts($conn);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         $productid = $row["ProductId"];
@@ -60,19 +60,22 @@ require_once './includes/dbcon.php';
                         $title = $row["Title"];
                         $description = $row["Description"];
                         $price = $row["Price"];
-                        echo '
-                        		<div class="item" id="' . $productid . '">
-			<div class="image">
-				<img src="' . $imgsrc . '">
-			</div>
-			<div class="price">
-                <h5>' . $title . '</h5>
-				<h6>Rs ' . $price . '</h46>
-			</div>
-			<div class="desc">
-			<P>' . $description . '</P>
-			</div>
-		</div>';
+                        $quantity = $row["Quantity"];
+                        if ($quantity > 0) {
+                            echo '
+                                        		<div class="item" id="' . $productid . '">
+                        	<div class="image">
+                        		<img src="' . $imgsrc . '">
+                        	</div>
+                        	<div class="price">
+                                <h5>' . $title . '</h5>
+                        		<h6>Rs ' . $price . '</h46>
+                        	</div>
+                        	<div class="desc">
+                        	<P>' . $description . '</P>
+                        	</div>
+                        </div>';
+                        }
                     }
                 }
                 ?>
@@ -90,6 +93,7 @@ require_once './includes/dbcon.php';
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./js/script.js"></script>
     <script src="./js/navhigh.js"></script>
+
 </body>
 
 </html>

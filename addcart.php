@@ -5,7 +5,8 @@ if (!isset($_SESSION["FirstName"])) {
     header("Location:login.php");
 }
 
-require './includes/dbcon.php';
+require_once './includes/dbcon.php';
+require_once './includes/query.php';
 ?>
 
 <head>
@@ -58,8 +59,8 @@ require './includes/dbcon.php';
             $buyerId = (int)$_SESSION['UserId'];
 
             // fetching cart details
-            $sql = "SELECT products.title,products.price,cart.Quantity FROM products INNER JOIN cart ON products.ProductId=cart.ProductId where cart.BuyerId=" . $buyerId . ";";
-            $result = $conn->query($sql);
+            // $sql = "SELECT products.title,products.price,cart.Quantity FROM products INNER JOIN cart ON products.ProductId=cart.ProductId where cart.BuyerId=" . $buyerId . ";";
+            $result = getcart($conn, $buyerId);
 
             if ($result->num_rows > 0) {
                 echo "<table>";

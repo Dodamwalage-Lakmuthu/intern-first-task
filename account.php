@@ -6,6 +6,7 @@ if (!isset($_SESSION["FirstName"])) {
 }
 
 require_once './includes/dbcon.php';
+require_once './includes/query.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -182,13 +183,7 @@ require_once './includes/dbcon.php';
         $ownerId = (int)$_SESSION['UserId'];
 
         if (!empty($ownerId) && !empty($title) && !empty($price) && !empty($uploaddir) && !empty($quantity) && !empty($description)) {
-            $sql = "INSERT INTO products(OwnerId,Title,Price,ImageLocation,Quantity,Description) values($ownerId,'$title',$price,'$uploaddir',$quantity,'$description');";
-            if ($conn->query($sql) == TRUE) {
-                header('Location:index.php');
-            } else {
-                echo $price;
-                echo $conn->error;
-            }
+            addproduct($conn, $ownerId, $title, $price, $uploaddir, $quantity, $description);
         }
         ?>
 
