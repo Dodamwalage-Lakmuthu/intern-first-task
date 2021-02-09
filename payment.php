@@ -16,8 +16,9 @@ require './includes/dbcon.php';
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/main.css">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/product.css">
     <title>Shop page</title>
 </head>
@@ -30,7 +31,7 @@ require './includes/dbcon.php';
         <!-- nav bar  -->
         <nav>
             <ul>
-                <li><a href="#" id="shop">Shop</a></li>
+                <li><a href="./index.php" id="shop">Shop</a></li>
                 <li><a href="./about.php" id="about">About</a></li>
                 <li><a href="./contact.php" id="contact">Contact</a></li>
                 <?php

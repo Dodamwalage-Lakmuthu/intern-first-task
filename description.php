@@ -8,11 +8,11 @@ require './includes/dbcon.php';
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/product.css">
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./css/main.css">
+    <!-- <link rel="stylesheet" href="./css/product.css"> -->
     <link rel="stylesheet" href="./css/desc.css">
     <link rel="stylesheet" href="./css/cartbut.css">
     <title>Shop page</title>
@@ -70,7 +70,7 @@ require './includes/dbcon.php';
 
                     <div class="title">
                         <h2><?php echo $title; ?></h2>
-                        <h3><?php echo $price; ?></h3>
+                        <h3>Rs <?php echo $price; ?></h3>
                         <p>Seller: <?php echo $sellername; ?></p>
                     </div>
                 </div>
@@ -80,6 +80,7 @@ require './includes/dbcon.php';
                 </div>
                 <div class="buying-form">
                     <form action="./includes/cart.php" method="post">
+                        <p>quantity</p>
                         <select class="form-control" name="buy-quantity">
                             <?php
                             while ($quantity >= 0) {

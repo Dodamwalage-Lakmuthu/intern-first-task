@@ -2,7 +2,7 @@
 session_start();
 if (!isset($_SESSION["FirstName"])) {
 
-    header("Location:index.php");
+    header("Location:login.php");
 }
 
 require './includes/dbcon.php';
@@ -13,13 +13,13 @@ require './includes/dbcon.php';
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/main.css">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/product.css">
     <link rel="stylesheet" href="./css/cart.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-
-
     <title>Shop page</title>
 </head>
 
@@ -72,16 +72,18 @@ require './includes/dbcon.php';
                 $subTotal =  (int)'';
                 while ($row = $result->fetch_assoc()) {
                     $productTitle = $row["title"];
-                    $productQuantity = $row["price"];
-                    $productPrice = $row["Quantity"];
+                    $productPrice = $row["price"];
+                    $productQuantity = $row["Quantity"];
                     $proTotalPrice = $productQuantity * $productPrice;
                     $subTotal += $proTotalPrice;
-                    echo "<tr>
+                    if ($productQuantity != 0) {
+                        echo "<tr>
                 <th>" . $productTitle . "</th>
                 <th>" . $productPrice . "</th>
                 <th>" .  $productQuantity . "</th>
                 <th>$proTotalPrice</th>
                 <tr/>";
+                    }
                 }
                 echo "</table>";
             }

@@ -33,7 +33,7 @@ nav ul li {
 
 nav ul li a {
   text-decoration: none;
-  color: #d7e1ea;
+  color: #94c1e7;
   text-transform: uppercase;
 }
 nav ul li a:hover {
@@ -41,7 +41,7 @@ nav ul li a:hover {
 }
 
 main {
-  background: #d7e1ea;
+  background: #88cee7;
 }
 
 footer {
@@ -74,3 +74,30 @@ footer {
 .spinner {
   text-align: center;
 }
+.con {
+  display: flex;
+  flex-wrap: wrap;
+}
+.main {
+  margin: 20px;
+  border: 1px solid black;
+  text-align: center;
+}
+.con div {
+  width: 300px;
+}
+
+.con div img {
+  width: 200px;
+}
+
+.highlight {
+  color: #f1e5d4;
+}
+
+/* @media only screen and(max-width:500px) {
+  .container {
+    width: 200px;
+  }
+
+} */

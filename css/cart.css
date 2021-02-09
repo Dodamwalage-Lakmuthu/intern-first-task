@@ -4,8 +4,13 @@ td {
   border-collapse: collapse;
 }
 th {
-  text-align: left;
+  text-align: center;
 }
 table {
   border: none;
+}
+
+.total {
+  padding-left: 20px;
+  margin: 20px;
 }

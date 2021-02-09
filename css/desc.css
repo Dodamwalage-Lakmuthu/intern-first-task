@@ -3,7 +3,7 @@
   flex-direction: column;
 }
 .img-con {
-  width: 50vw;
+  width: 30vw;
 }
 
 .product {
@@ -20,4 +20,7 @@ button.icon {
   border: none;
   color: red;
   background: blue;
+}
+img {
+  width: 300px;
 }
