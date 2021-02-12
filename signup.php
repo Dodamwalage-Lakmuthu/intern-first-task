@@ -73,27 +73,6 @@ require_once './includes/query.php';
         <header>
             <h1>My Shopping</h1>
         </header>
-        <!-- nav bar  -->
-        <nav>
-            <ul>
-                <li><a href="./index.php" id="index">Shop</a></li>
-                <li><a href="./about.php" id="about">About</a></li>
-                <li><a href="./contact.php" id="contact">Contact</a></li>
-                <?php
-                if (isset($_SESSION["FirstName"])) {
-                    echo "<li><a href='./account.php' id='account'>" . $_SESSION["FirstName"] . "'s Account</a></li>";
-                    echo "<li><a href='./includes/logout.php' id='logout'>LOGOUT</a></li>";
-                } else {
-                    echo "<li><a href='./signup.php' id='signup'>SignUp</a></li>";
-                    echo "<li><a href='./login.php' id='login'>LogIn</a></li>";
-                }
-                ?>
-
-
-            </ul>
-        </nav><!-- end of nav bar -->
-
-
 
         <div class="signup">
             <a href="./index.php">

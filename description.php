@@ -40,8 +40,6 @@ require_once './includes/query.php'
                     echo "<li><a href='./login.php' id='login'>LogIn</a></li>";
                 }
                 ?>
-
-
             </ul>
         </nav><!-- end of nav bar -->
 
@@ -65,37 +63,40 @@ require_once './includes/query.php'
             ?>
 
             <div class="details">
+                <h2><?php echo $title; ?></h2>
                 <div class="product">
                     <section class="img-con">
                         <img src=<?php echo $imagelocation ?> alt="">
                     </section>
 
                     <div class="title">
-                        <h2><?php echo $title; ?></h2>
+
                         <h3>Rs <?php echo $price; ?></h3>
                         <p>Seller: <?php echo $sellername; ?></p>
                     </div>
+                    <div class="buying-form">
+                        <form action="./includes/cart.php" method="post">
+                            <p>quantity</p>
+                            <select class="form-control" name="buy-quantity">
+                                <?php
+                                while ($quantity > 0) {
+                                    echo "<option value='" . $quantity . "'>" . $quantity . "</option>";
+                                    $quantity--;
+                                }
+                                ?>
+                            </select>
+                            <input type="hidden" name="productId" value="<?php echo $productid ?>">
+                            <input type="hidden" name="ownerId" value="<?php echo $ownerId ?>">
+                            <button class="icon" type="submit"><i class="fas fa-cart-plus"></i></button>
+                        </form>
+                    </div>
+
                 </div>
                 <div class="product-details">
                     <h2>About This Item</h2>
                     <p><?php echo $description; ?></p>
                 </div>
-                <div class="buying-form">
-                    <form action="./includes/cart.php" method="post">
-                        <p>quantity</p>
-                        <select class="form-control" name="buy-quantity">
-                            <?php
-                            while ($quantity >= 0) {
-                                echo "<option value='" . $quantity . "'>" . $quantity . "</option>";
-                                $quantity--;
-                            }
-                            ?>
-                        </select>
-                        <input type="hidden" name="productId" value="<?php echo $productid ?>">
-                        <input type="hidden" name="ownerId" value="<?php echo $ownerId ?>">
-                        <button class="icon" type="submit"><i class="fas fa-cart-plus"></i></button>
-                    </form>
-                </div>
+
             </div>
 
 

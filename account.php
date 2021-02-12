@@ -161,6 +161,7 @@ require_once './includes/query.php';
                     <div class="custom-file">
                         <input type="file" name="image" class="custom-file-input" id="imageinput" required accept="jpg,png,jpeg,gif">
                         <label class="custom-file-label" for="image input">Choose images..</label>
+                        <img src="" alt="" id="thumbnail" class="hidden">
                         <span class="error"><?php echo $Errnewfilename; ?></span>
                         <div class="invalid-feedback">Example invalid custom file feedback</div>
                     </div>

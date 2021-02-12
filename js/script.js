@@ -6,12 +6,12 @@ $(document).ready(function(){
         var clickedLink = $(this).attr('id');
         //  $('main').load('./includes/content.php #' + clickedLink);
         var newurl = '/ecom/description.php?id='.concat(clickedLink);
-        console.log(newurl);
+        // console.log(newurl);
         //
         window.location.replace(newurl);
     })
 
-    $('nav').sticky();
+  
 
 
 

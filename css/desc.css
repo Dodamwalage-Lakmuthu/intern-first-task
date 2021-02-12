@@ -4,17 +4,14 @@
 }
 .img-con {
   width: 30vw;
+  height: 30vw;
 }
 
 .product {
   display: flex;
   left: 0;
 }
-.product img {
-  margin-left: 0;
-  width: 30vw;
-  height: auto;
-}
+
 button.icon {
   min-width: fit-content;
   border: none;
@@ -22,5 +19,12 @@ button.icon {
   background: blue;
 }
 img {
-  width: 300px;
+  width: 30vw;
+  height: 30vw;
+  object-fit: contain;
+}
+
+.title {
+  margin: 10% 2%;
+  width: 30%;
 }

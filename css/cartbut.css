@@ -1,9 +1,9 @@
 .buying-form {
   width: 20%;
+  margin: 10% 2%;
 }
 
 button.icon {
-  min-width: fit-content;
   border: none;
   color: #e63946;
   background: #1f5298;
@@ -11,6 +11,6 @@ button.icon {
   margin: 5px;
 }
 button i {
-  width: 100px;
+  width: 200px;
   padding: 10px;
 }
